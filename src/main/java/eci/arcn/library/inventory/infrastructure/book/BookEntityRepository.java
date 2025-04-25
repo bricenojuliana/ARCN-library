@@ -1,4 +1,4 @@
-package eci.arcn.library.inventory.infrastructure;
+package eci.arcn.library.inventory.infrastructure.book;
 
 import org.springframework.data.repository.CrudRepository;
 
