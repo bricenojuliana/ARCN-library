@@ -1,4 +1,4 @@
-package eci.arcn.library.inventory.infrastructure;
+package eci.arcn.library.inventory.infrastructure.book;
 
 import eci.arcn.library.inventory.domain.book.Book;
 import eci.arcn.library.inventory.domain.book.BookId;
