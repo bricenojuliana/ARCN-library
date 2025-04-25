@@ -2,6 +2,7 @@ package eci.arcn.library.transaction.api;
 
 import eci.arcn.library.transaction.application.RequestBookUseCase;
 import eci.arcn.library.transaction.application.ReturnBookUseCase;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,7 @@ public class TransactionController {
     private final RequestBookUseCase requestBookUseCase;
     private final ReturnBookUseCase returnBookUseCase;
 
+    @Autowired
     public TransactionController(RequestBookUseCase requestBookUseCase, ReturnBookUseCase returnBookUseCase) {
         this.requestBookUseCase = requestBookUseCase;
         this.returnBookUseCase = returnBookUseCase;

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -15,7 +16,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class TransactionEntity {
     @Id
-    private String transactionId;
+    @GeneratedValue
+    private UUID transactionId;
     private String bookId;
     private String userId;
     private LocalDate requestDate;
