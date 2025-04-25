@@ -7,7 +7,6 @@ import eci.arcn.library.inventory.domain.copy.CopyId;
 import eci.arcn.library.inventory.domain.copy.CopyRepository;
 import eci.arcn.library.inventory.infrastructure.book.BookEntity;
 import eci.arcn.library.inventory.infrastructure.book.BookEntityRepository;
-
 import org.springframework.stereotype.Repository;
 
 import java.util.stream.Collectors;
@@ -49,6 +48,11 @@ public class JpaCopyRepository implements CopyRepository {
 
     @Override
     public void deleteById(CopyId id) {
+        CopyEntity copyEntity = copyEntityRepository.findById(id.id())
+                .orElseThrow(() -> new IllegalArgumentException("Copy not found"));
+        if (!copyEntity.isAvailable()) {
+            throw new IllegalArgumentException("Cannot delete a copy that is not available");
+        }
         copyEntityRepository.deleteById(id.id());
     }
 

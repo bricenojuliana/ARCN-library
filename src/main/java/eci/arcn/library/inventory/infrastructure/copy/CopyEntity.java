@@ -1,7 +1,7 @@
 package eci.arcn.library.inventory.infrastructure.copy;
 
+import eci.arcn.library.inventory.infrastructure.book.BookEntity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -10,8 +10,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.UUID;
-
-import eci.arcn.library.inventory.infrastructure.book.BookEntity;
 
 @Entity
 @AllArgsConstructor
