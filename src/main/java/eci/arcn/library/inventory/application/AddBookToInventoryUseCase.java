@@ -1,5 +1,6 @@
 package eci.arcn.library.inventory.application;
 
+import eci.arcn.library.UseCase;
 import eci.arcn.library.inventory.domain.book.Book;
 import eci.arcn.library.inventory.domain.book.BookRepository;
 import eci.arcn.library.inventory.domain.book.Isbn;

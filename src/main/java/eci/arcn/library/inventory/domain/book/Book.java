@@ -5,12 +5,10 @@ import org.springframework.util.Assert;
 
 @Getter
 public class Book {
-    private BookId id;
 
+    private BookId id;
     private String title;
     private String author;
-
-
     private Isbn isbn;
 
 

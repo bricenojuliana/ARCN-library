@@ -1,4 +1,4 @@
-package eci.arcn.library.inventory.application;
+package eci.arcn.library;
 
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
