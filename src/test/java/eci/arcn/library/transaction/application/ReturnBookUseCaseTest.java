@@ -25,6 +25,7 @@ class ReturnBookUseCaseTest {
         Transaction transaction = new Transaction();
         transaction.setTransactionId(transactionId);
         transaction.setStatus(TransactionStatus.REQUESTED);
+        transaction.setUserId(UUID.randomUUID());
 
         when(mockRepository.findById(transactionId)).thenReturn(Optional.of(transaction));
 

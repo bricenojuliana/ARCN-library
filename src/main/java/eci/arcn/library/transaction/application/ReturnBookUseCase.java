@@ -27,8 +27,7 @@ public class ReturnBookUseCase {
         }
 
         Transaction transaction = transactionOpt.get();
-        transaction.setReturnDate(java.time.LocalDate.now());
-        transaction.setStatus(TransactionStatus.RETURNED);
+        transaction.returnBook();
 
         transactionRepository.update(transaction);
     }
