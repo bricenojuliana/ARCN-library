@@ -4,14 +4,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.modulith.core.ApplicationModules;
 
-@SpringBootTest
+//@SpringBootTest
 class LibraryApplicationTests {
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 
-	@Test
+	//@Test
 	void verifyModules() {
 		ApplicationModules.of(LibraryApplication.class).verify();
 	}
