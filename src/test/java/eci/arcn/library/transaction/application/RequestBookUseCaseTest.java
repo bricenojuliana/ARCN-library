@@ -28,7 +28,7 @@ class RequestBookUseCaseTest {
     void shouldSaveTransactionWithCorrectData() {
         // Arrange
         UUID bookId = UUID.randomUUID();
-        UUID userId = UUID.randomUUID();
+        String userId = "user-123";
 
         // Act
         useCase.execute(bookId, userId);
