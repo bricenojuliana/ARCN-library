@@ -1,6 +1,6 @@
 package eci.arcn.library.user.infrastructure;
 
-import eci.arcn.library.inventory.infrastructure.book.BookEntity;
+// Removed unused import for BookEntity
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
