@@ -3,6 +3,7 @@ package eci.arcn.library.transaction.infrastructure;
 
 import eci.arcn.library.transaction.domain.Transaction;
 import eci.arcn.library.transaction.domain.TransactionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -14,17 +15,17 @@ public class UserRestrictionScheduler {
 
     private final TransactionRepository transactionRepository;
 
+    @Autowired
     public UserRestrictionScheduler( TransactionRepository transactionRepository) {
         this.transactionRepository = transactionRepository;
     }
 
     // Se ejecuta todos los días a las 00:00 AM
-    @Scheduled(cron = "0 7 22 * * ?")
+    @Scheduled(cron = "0 07 23 * * ?")
     public void checkUserRestrictions() {
         System.out.println("Iniciando verificación de restricciones de usuarios...");
 
         List<Transaction> allTransactions = transactionRepository.findAll();
-
         for (Transaction transaction : allTransactions) {
             boolean hasOverdueBooks = transactionRepository.hasOverdueBooks(transaction.getTransactionId(), LocalDate.now());
 

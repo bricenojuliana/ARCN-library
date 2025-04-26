@@ -35,6 +35,7 @@ public class TransactionRepository implements eci.arcn.library.transaction.domai
         entity.setRequestDate(transaction.getRequestDate());
         entity.setReturnDate(transaction.getReturnDate());
         entity.setStatus(transaction.getStatus().name());
+        entity.setExpiration(transaction.getExpiration());
 
         repository.save(entity);
     }
@@ -97,6 +98,6 @@ public class TransactionRepository implements eci.arcn.library.transaction.domai
     @Override
     public boolean hasOverdueBooks(UUID transactionId, LocalDate currentDate) {
         return repository.findByTransactionId(transactionId).stream()
-                .anyMatch(tx -> tx.getReturnDate() == null && tx.getRequestDate().plusDays(0).isBefore(currentDate));
+                .anyMatch(tx -> tx.getReturnDate() == null && tx.getRequestDate().plusDays(14).isBefore(currentDate));
     }
 }

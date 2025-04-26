@@ -33,7 +33,7 @@ class ReturnBookUseCaseTest {
 
         // Assert
         ArgumentCaptor<Transaction> captor = ArgumentCaptor.forClass(Transaction.class);
-        verify(mockRepository, times(1)).save(captor.capture());
+        verify(mockRepository, times(1)).update(captor.capture());
 
         Transaction savedTransaction = captor.getValue();
         assertEquals(TransactionStatus.RETURNED, savedTransaction.getStatus());
