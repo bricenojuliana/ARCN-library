@@ -6,14 +6,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.UUID;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Transaction {
-    private String transactionId;
-    private String bookId;
-    private String userId;
+    private UUID transactionId;
+    private UUID bookId;
+    private UUID userId;
     private LocalDate requestDate;
     private LocalDate returnDate;
     private TransactionStatus status;
