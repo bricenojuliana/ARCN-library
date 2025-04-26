@@ -1,47 +1,67 @@
 package eci.arcn.library.fine.infrastructure;
 
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
 import org.springframework.stereotype.Repository;
-
 import eci.arcn.library.fine.domain.Fine;
 import eci.arcn.library.fine.domain.FineId;
 import eci.arcn.library.fine.domain.FineRepository;
 
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Repository
-public class JpaFineRepository implements FineRepository{
+public class JpaFineRepository implements FineRepository {
 
-    private final FineEntytyRepository fineEntytyRepository;
+    private final FineEntityRepository fineEntityRepository;
 
-    public JpaFineRepository(FineEntytyRepository fineEntytyRepository) {
-        this.fineEntytyRepository = fineEntytyRepository;
+    public JpaFineRepository(FineEntityRepository fineEntityRepository) {
+        this.fineEntityRepository = fineEntityRepository;
     }
 
     @Override
     public Fine save(Fine fine) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+        FineEntity entity = new FineEntity(
+                fine.getId().id(),
+                fine.getUserId(),
+                fine.getAmount(),
+                fine.getDueDate(),
+                fine.getBook(),
+                fine.isDelayed(),
+                fine.isPaid()
+        );
+        fineEntityRepository.save(entity);
+        return fine;
     }
 
     @Override
     public Fine findById(FineId id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+        FineEntity entity = fineEntityRepository.findById(id.id())
+                .orElseThrow(() -> new IllegalArgumentException("Fine not found"));
+        return new Fine(
+                new FineId(entity.getId()),
+                entity.getUserId(),
+                entity.getAmount(),
+                entity.getDueDate(),
+                entity.getBook(),
+                entity.isDelayed()
+        );
     }
 
     @Override
     public Iterable<Fine> findByUserId(String userId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByUserId'");
+        return StreamSupport.stream(fineEntityRepository.findByUserId(userId).spliterator(), false)
+                .map(entity -> new Fine(
+                        new FineId(entity.getId()),
+                        entity.getUserId(),
+                        entity.getAmount(),
+                        entity.getDueDate(),
+                        entity.getBook(),
+                        entity.isDelayed()
+                ))
+                .collect(Collectors.toList());
     }
 
     @Override
     public void deleteById(FineId id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteById'");
+        fineEntityRepository.deleteById(id.id());
     }
-    
-
 }

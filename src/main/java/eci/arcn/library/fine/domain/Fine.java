@@ -3,7 +3,7 @@ package eci.arcn.library.fine.domain;
 
 import lombok.Getter;
 import org.springframework.util.Assert;
-import java.time.LocalDate;
+
 
 @Getter
 public class Fine {
@@ -11,22 +11,30 @@ public class Fine {
     private String userId;
     private String amount;
     private String dueDate;
+    private String book;
+    private boolean delayed;
     private boolean paid;
 
-    public Fine(String userId, String amount, String dueDate) {
-        Assert.notNull(userId, "UserId must not be null");
-        Assert.notNull(amount, "Amount must not be null");
-        Assert.notNull(dueDate, "Due date must not be null");
-        this.id = new FineId();
+    public Fine(FineId id,String userId, String amount, String dueDate, String book, boolean delayed) {
+        this.id = id;
         this.userId = userId;
         this.amount = amount;
         this.dueDate = dueDate;
+        this.book = book;
+        this.delayed = delayed;
         this.paid = false;
     }
 
     public void markAsPaid() {
         this.paid = true;
     }
-    
 
+    public String getBook() {
+        return this.book;
+    }
+
+    public boolean isDelayed() {
+        return this.delayed;
+    }
 }
+

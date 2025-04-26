@@ -1,7 +1,6 @@
 package eci.arcn.library.fine.application;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
+
 
 import org.springframework.stereotype.Service;
 
@@ -20,6 +19,7 @@ public class GenerateFineUseCase {
     public void execute(String userId, String amount, String dueDate) {
 
         Fine fine = new Fine(userId, amount, dueDate);
+
         fineRepository.save(fine);
     }
 }

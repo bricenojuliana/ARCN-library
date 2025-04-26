@@ -29,5 +29,11 @@ public class PayFineUseCase {
         if (allFinesPaid) {
             blacklistService.removeFromBlacklist(userId);
         }
+
+        if (userId.isEmpty()) {
+            throw new IllegalArgumentException("Fine not found");
+        }
     }
+
+
 }

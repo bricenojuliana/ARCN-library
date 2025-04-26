@@ -1,24 +1,27 @@
 package eci.arcn.library.fine.infrastructure;
 
-import java.util.UUID;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.UUID;
 
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class FineEntity {
+
     @Id
     private UUID id;
-    private String Name;
+    private String userId;
+    private String amount;
+    private String dueDate;
     private String book;
-    private String pay;
-    private boolean delay;
-
-    public FineEntity() {}
+    private boolean delayed;
+    private boolean paid;
 }
