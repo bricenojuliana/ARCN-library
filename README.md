@@ -82,15 +82,24 @@ To run the application, follow these steps:
 
 ## API Endpoints
 
-### Copy Management
-- **POST** `/api/copies`: Registers a new book copy.
-  - Request Body:
-    ```json
-    {
-      "bookId": "UUID",
-      "barCode": "String"
-    }
-    ```
+The project currently has **9 implemented endpoints**, including the **Book Management** endpoints:
+
+### **Copy Management (`CopyController`)**
+1. **POST** `/api/copies`: Registers a new book copy.
+
+### **Transaction Management (`TransactionController`)**
+2. **POST** `/api/transactions/request`: Requests a book.
+3. **POST** `/api/transactions/return`: Returns a book.
+
+### **User Management (`UserController`)**
+4. **POST** `/api/users`: Registers a new user.
+5. **DELETE** `/api/users/{id}`: Deletes a user.
+6. **PUT** `/api/users/{id}`: Updates a user.
+
+### **Book Management (`BookController`)**
+7. **POST** `/api/books`: Registers a new book.
+8. **GET** `/api/books/{id}`: Retrieves a book by its ID.
+9. **DELETE** `/api/books/{id}`: Deletes a book by its ID.
 
 ### Transaction Management
 - **To be implemented**.
