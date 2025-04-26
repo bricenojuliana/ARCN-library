@@ -43,6 +43,20 @@ public class User {
         this.registeredAt = registeredAt;
     }
 
+    public User(UserId id, String name, Email email, boolean active, boolean emailVerified, LocalDateTime registeredAt, FixedSizeList<UUID> borrowedBooks) {
+        Assert.notNull(id, "Id must not be null");
+        Assert.notNull(name, "Name must not be null");
+        Assert.notNull(email, "Email must not be null");
+        Assert.notNull(registeredAt, "Registered date must not be null");
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.active = active;
+        this.emailVerified = emailVerified;
+        this.registeredAt = registeredAt;
+        this.borrowedBooks = borrowedBooks;
+    }
+
     public void verifyEmail() {
         this.emailVerified = true;
     }

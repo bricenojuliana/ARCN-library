@@ -36,19 +36,9 @@ public class JpaUserRepository implements UserRepository {
 
     @Override
     public Optional<User> findById(UserId id) {
-        Optional<UserEntity> userEntity = userEntityRepository.findById(id.id());
-        if (userEntity.isPresent()) {
-            UserEntity entity = userEntity.get();
-            return Optional.of(new User(
-                    new UserId(entity.getId()),
-                    entity.getName(),
-                    new Email(entity.getEmail()),
-                    entity.isActive(),
-                    entity.isEmailVerified(),
-                    entity.getRegisteredAt()));
-        }
-        return Optional.empty();
+        return userEntityRepository.findById(id.id()).map(this::toDomain);
     }
+
 
     @Override
     public void deleteById(UserId id) {
@@ -57,49 +47,23 @@ public class JpaUserRepository implements UserRepository {
 
     @Override
     public Iterable<User> findAll() {
-        Iterable<UserEntity> userEntities = userEntityRepository.findAll();
-        return StreamSupport.stream(userEntities.spliterator(), false)
-                .map(entity -> new User(
-                        new UserId(entity.getId()),
-                        entity.getName(),
-                        new Email(entity.getEmail()),
-                        entity.isActive(),
-                        entity.isEmailVerified(),
-                        entity.getRegisteredAt()))
+        return StreamSupport.stream(userEntityRepository.findAll().spliterator(), false)
+                .map(this::toDomain)
                 .collect(Collectors.toList());
     }
 
+
     @Override
     public Optional<User> findByEmail(Email email) {
-        Optional<UserEntity> userEntity = userEntityRepository.findByEmail(email.email());
-        if (userEntity.isPresent()) {
-            UserEntity entity = userEntity.get();
-            return Optional.of(new User(
-                    new UserId(entity.getId()),
-                    entity.getName(),
-                    new Email(entity.getEmail()),
-                    entity.isActive(),
-                    entity.isEmailVerified(),
-                    entity.getRegisteredAt()));
-        }
-        return Optional.empty();
+        return userEntityRepository.findByEmail(email.email()).map(this::toDomain);
     }
+
 
     @Override
     public Optional<User> findByName(String name) {
-        Optional<UserEntity> userEntity = userEntityRepository.findByName(name);
-        if (userEntity.isPresent()) {
-            UserEntity entity = userEntity.get();
-            return Optional.of(new User(
-                    new UserId(entity.getId()),
-                    entity.getName(),
-                    new Email(entity.getEmail()),
-                    entity.isActive(),
-                    entity.isEmailVerified(),
-                    entity.getRegisteredAt()));
-        }
-        return Optional.empty();
+        return userEntityRepository.findByName(name).map(this::toDomain);
     }
+
 
     @Override
     public Boolean borrowBook(UserId userId, UUID bookId) {
@@ -124,4 +88,24 @@ public class JpaUserRepository implements UserRepository {
         }
         return false;
     }
+
+    private User toDomain(UserEntity entity) {
+        User user = new User(
+                new UserId(entity.getId()),
+                entity.getName(),
+                new Email(entity.getEmail()),
+                entity.isActive(),
+                entity.isEmailVerified(),
+                entity.getRegisteredAt()
+        );
+
+        // Asignar borrowedBooks manualmente
+        if (entity.getBorrowedBooks() != null) {
+            for (UUID bookId : entity.getBorrowedBooks()) {
+                user.borrowBook(bookId);
+            }
+        }
+        return user;
+    }
+
 }
