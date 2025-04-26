@@ -17,9 +17,9 @@ public class AddBookToInventoryUseCase {
         this.bookRepository = bookRepository;
     }
 
-    public void execute(Isbn isbn) {
+    public Book execute(Isbn isbn) {
         BookInformation result = bookSearchService.search(isbn);
         Book book = new Book(result.title(), result.author(), isbn);
-        bookRepository.save(book);
+        return bookRepository.save(book);
     }
 }

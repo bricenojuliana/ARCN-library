@@ -1,10 +1,10 @@
 package eci.arcn.library.transaction.application;
 
 
+
 import eci.arcn.library.inventory.application.BookSearchService;
 import eci.arcn.library.inventory.domain.book.BookRepository;
 import eci.arcn.library.transaction.domain.Transaction;
-import eci.arcn.library.transaction.domain.TransactionRepository;
 import eci.arcn.library.transaction.domain.TransactionStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,7 +31,7 @@ class RequestBookUseCaseTest {
     void shouldSaveTransactionWithCorrectData() {
         // Arrange
         UUID bookId = UUID.randomUUID();
-        UUID userId = UUID.randomUUID();
+        String userId = "user-123";
 
         // Act
         useCase.execute(bookId, userId);

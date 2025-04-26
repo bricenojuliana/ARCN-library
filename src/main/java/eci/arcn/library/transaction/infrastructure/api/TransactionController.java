@@ -23,7 +23,7 @@ public class TransactionController {
     }
 
     @PostMapping("/request")
-    public ResponseEntity<String> requestBook(@RequestParam UUID bookId, @RequestParam UUID userId) {
+    public ResponseEntity<String> requestBook(@RequestParam UUID bookId, @RequestParam String userId) {
         requestBookUseCase.execute(bookId, userId);
         return ResponseEntity.ok("Libro solicitado con éxito.");
     }

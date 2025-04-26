@@ -18,14 +18,16 @@ public class RequestBookUseCase {
         this.transactionRepository = transactionRepository;
     }
 
-    public void execute(UUID bookId, UUID userId) {
-        Transaction transaction = new Transaction();
-        transaction.setTransactionId(generateTransactionId());
-        transaction.setBookId(bookId);
-        transaction.setUserId(userId);
-        transaction.setRequestDate(LocalDate.now());
-        transaction.setStatus(TransactionStatus.REQUESTED);
-        transaction.setExpiration(Boolean.FALSE);
+    public void execute(UUID bookId, String userId) {
+        Transaction transaction = new Transaction(
+                generateTransactionId(),
+                bookId,
+                userId,
+                LocalDate.now(),
+                null,
+                TransactionStatus.REQUESTED,
+                false
+        );
         transactionRepository.save(transaction);
     }
 
