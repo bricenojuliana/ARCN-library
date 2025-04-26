@@ -1,5 +1,6 @@
 package eci.arcn.library.inventory.application;
 
+import eci.arcn.library.inventory.domain.copy.Copy;
 import eci.arcn.library.inventory.domain.copy.CopyId;
 import eci.arcn.library.inventory.domain.copy.CopyRepository;
 import eci.arcn.library.transaction.LoanClosed;
@@ -17,14 +18,14 @@ public class InventoryEventListener {
 
     @ApplicationModuleListener
     public void handle(LoanCreated event) {
-        var copy = copyRepository.findById(new CopyId(event.copyId()));
+        Copy copy = copyRepository.findById(new CopyId(event.copyId()));
         copy.makeUnavailable();
         copyRepository.save(copy);
     }
 
     @ApplicationModuleListener
     public void handle(LoanClosed event) {
-        var copy = copyRepository.findById(new CopyId(event.copyId()));
+        Copy copy = copyRepository.findById(new CopyId(event.copyId()));
         copy.makeAvailable();
         copyRepository.save(copy);
     }

@@ -7,7 +7,8 @@ import eci.arcn.library.user.domain.UserId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/api/users")
+@RestController
+@RequestMapping("/api/users")
 public class UserController {
     private final RegisterNewUserUseCase registerNewUserUseCase;
     private final DeleteUserUseCase deleteUserUseCase;

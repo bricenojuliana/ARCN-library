@@ -19,7 +19,7 @@ public class TransactionEntity {
     @GeneratedValue
     private UUID transactionId;
     private UUID bookId;
-    private UUID userId;
+    private String userId;
     private LocalDate requestDate;
     private LocalDate returnDate;
     private String status;

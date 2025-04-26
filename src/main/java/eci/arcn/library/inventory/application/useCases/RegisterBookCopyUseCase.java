@@ -14,7 +14,7 @@ public class RegisterBookCopyUseCase {
         this.copyRepository = copyRepository;
     }
 
-    public void execute(BookId bookId, BarCode barCode) {
-        copyRepository.save(new Copy(bookId, barCode));
+    public Copy execute(BookId bookId, BarCode barCode) {
+        return copyRepository.save(new Copy(bookId, barCode));
     }
 }
