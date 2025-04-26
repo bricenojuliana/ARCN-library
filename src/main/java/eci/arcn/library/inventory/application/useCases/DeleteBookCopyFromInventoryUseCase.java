@@ -1,6 +1,6 @@
 package eci.arcn.library.inventory.application.useCases;
 
-import eci.arcn.library.UseCase;
+import eci.arcn.library.shared.UseCase;
 import eci.arcn.library.inventory.domain.copy.CopyId;
 import eci.arcn.library.inventory.domain.copy.CopyRepository;
 

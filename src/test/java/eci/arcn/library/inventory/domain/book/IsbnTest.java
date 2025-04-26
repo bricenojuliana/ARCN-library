@@ -1,4 +1,4 @@
-package eci.arcn.library.domain.book;
+package eci.arcn.library.inventory.domain.book;
 
 import eci.arcn.library.inventory.domain.book.Isbn;
 import org.junit.jupiter.api.Test;

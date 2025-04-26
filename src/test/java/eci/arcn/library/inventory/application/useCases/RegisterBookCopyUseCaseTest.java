@@ -1,4 +1,4 @@
-package eci.arcn.library.application.useCases;
+package eci.arcn.library.inventory.application.useCases;
 
 import eci.arcn.library.inventory.application.useCases.RegisterBookCopyUseCase;
 import eci.arcn.library.inventory.domain.book.BookId;
