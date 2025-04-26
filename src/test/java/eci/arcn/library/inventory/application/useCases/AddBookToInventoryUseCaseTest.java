@@ -11,7 +11,7 @@ import org.mockito.ArgumentCaptor;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-class AddBookToInventoryUseCaseTest{
+class AddBookToInventoryUseCaseTest {
 
     private BookSearchService bookSearchService;
     private BookRepository bookRepository;
