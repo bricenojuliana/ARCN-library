@@ -19,4 +19,5 @@ public class Transaction {
     private LocalDate requestDate;
     private LocalDate returnDate;
     private TransactionStatus status;
+    private Boolean vencimiento;
 }

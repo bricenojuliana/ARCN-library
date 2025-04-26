@@ -30,6 +30,6 @@ public class ReturnBookUseCase {
         transaction.setReturnDate(java.time.LocalDate.now());
         transaction.setStatus(TransactionStatus.RETURNED);
 
-        transactionRepository.save(transaction);
+        transactionRepository.update(transaction);
     }
 }
