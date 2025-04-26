@@ -25,6 +25,7 @@ public class RequestBookUseCase {
         transaction.setUserId(userId);
         transaction.setRequestDate(LocalDate.now());
         transaction.setStatus(TransactionStatus.REQUESTED);
+        transaction.setExpiration(Boolean.FALSE);
         transactionRepository.save(transaction);
     }
 

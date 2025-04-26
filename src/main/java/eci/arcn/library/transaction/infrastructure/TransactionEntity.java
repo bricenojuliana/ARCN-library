@@ -23,4 +23,5 @@ public class TransactionEntity {
     private LocalDate requestDate;
     private LocalDate returnDate;
     private String status;
+    private Boolean expiration;
 }
