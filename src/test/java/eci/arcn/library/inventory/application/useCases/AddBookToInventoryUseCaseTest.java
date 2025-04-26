@@ -1,4 +1,4 @@
-package eci.arcn.library.inventory.application.useCases;
+package eci.arcn.library.inventory.application;
 
 import eci.arcn.library.inventory.application.useCases.AddBookToInventoryUseCase;
 import eci.arcn.library.inventory.application.BookInformation;
