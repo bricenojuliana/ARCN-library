@@ -1,9 +1,12 @@
 package eci.arcn.library.user.domain;
 
+import eci.arcn.library.shared.FixedSizeList;
 import lombok.Getter;
 import org.springframework.util.Assert;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Getter
 public class User {
@@ -12,7 +15,8 @@ public class User {
     private Email email;
     private boolean active;
     private boolean emailVerified;
-    private LocalDateTime registeredAt;
+    private final LocalDateTime registeredAt;
+    private FixedSizeList<UUID> borrowedBooks;
 
     public User(String id, String name, String email) {
         Assert.notNull(name, "Name must not be null");
@@ -23,6 +27,7 @@ public class User {
         this.active = true;
         this.emailVerified = false;
         this.registeredAt = LocalDateTime.now();
+        this.borrowedBooks = new FixedSizeList<>(2);
     }
 
     public User(UserId id, String name, Email email, boolean active, boolean emailVerified, LocalDateTime registeredAt) {
@@ -63,6 +68,22 @@ public class User {
     public boolean hasActiveFines() {
         // Placeholder for actual fine checking logic
         return false;
+    }
+
+    public void borrowBook(UUID bookId) {
+        Assert.notNull(bookId, "Book ID must not be null");
+        if (borrowedBooks.size() >= 2) {
+            throw new IllegalStateException("User has already borrowed the maximum number of books");
+        }
+        borrowedBooks.add(bookId);
+    }
+
+    public void returnBook(UUID bookId) {
+        Assert.notNull(bookId, "Book ID must not be null");
+        if (!borrowedBooks.contains(bookId)) {
+            throw new IllegalStateException("User has not borrowed this book");
+        }
+        borrowedBooks.remove(bookId);
     }
 
 }

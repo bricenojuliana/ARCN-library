@@ -7,6 +7,7 @@ import eci.arcn.library.user.domain.UserRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -27,7 +28,8 @@ public class JpaUserRepository implements UserRepository {
                 user.getEmail().email(),
                 user.isActive(),
                 user.isEmailVerified(),
-                user.getRegisteredAt());
+                user.getRegisteredAt(),
+                user.getBorrowedBooks().getItems());
         userEntityRepository.save(userEntity);
         return user;
     }
@@ -97,5 +99,29 @@ public class JpaUserRepository implements UserRepository {
                     entity.getRegisteredAt()));
         }
         return Optional.empty();
+    }
+
+    @Override
+    public Boolean borrowBook(UserId userId, UUID bookId) {
+        Optional<UserEntity> userEntity = userEntityRepository.findById(userId.id());
+        if (userEntity.isPresent()) {
+            UserEntity entity = userEntity.get();
+            entity.getBorrowedBooks().add(bookId);
+            userEntityRepository.save(entity);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public Boolean returnBook(UserId userId, UUID bookId) {
+        Optional<UserEntity> userEntity = userEntityRepository.findById(userId.id());
+        if (userEntity.isPresent()) {
+            UserEntity entity = userEntity.get();
+            entity.getBorrowedBooks().remove(bookId);
+            userEntityRepository.save(entity);
+            return true;
+        }
+        return false;
     }
 }

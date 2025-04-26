@@ -1,6 +1,6 @@
 package eci.arcn.library.user.application.useCases;
 
-import eci.arcn.library.UseCase;
+import eci.arcn.library.shared.UseCase;
 import eci.arcn.library.user.domain.User;
 import eci.arcn.library.user.domain.UserRepository;
 

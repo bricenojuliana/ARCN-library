@@ -2,14 +2,14 @@ package eci.arcn.library.user.infrastructure;
 
 import eci.arcn.library.user.domain.Email;
 import eci.arcn.library.user.domain.UserId;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
 @AllArgsConstructor
@@ -26,6 +26,10 @@ public class UserEntity {
     private boolean active;
     private boolean emailVerified;
     private LocalDateTime registeredAt;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<UUID> borrowedBooks; 
+
 
     public UserEntity() {}
 }
