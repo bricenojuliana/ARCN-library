@@ -30,7 +30,7 @@ jobs:
 
       - name: Upload Test Reports
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4  # Actualizado de v2 a v4
         with:
           name: test-report
           path: target/test-*.xml  # Los resultados de las pruebas se pueden cargar como artefactos
