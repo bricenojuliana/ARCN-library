@@ -33,6 +33,8 @@ public class PayFineUseCase {
         if (userId.isEmpty()) {
             throw new IllegalArgumentException("Fine not found");
         }
+
+        
     }
 
 

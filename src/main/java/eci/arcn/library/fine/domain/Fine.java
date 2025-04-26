@@ -1,9 +1,6 @@
 package eci.arcn.library.fine.domain;
 
-
 import lombok.Getter;
-import org.springframework.util.Assert;
-
 
 @Getter
 public class Fine {
