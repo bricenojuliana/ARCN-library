@@ -21,7 +21,7 @@ public class UserRestrictionScheduler {
     }
 
     // Se ejecuta todos los días a las 00:00 AM
-    @Scheduled(cron = "0 07 23 * * ?")
+    @Scheduled(cron = "0 00 00 * * ?")
     public void checkUserRestrictions() {
         System.out.println("Iniciando verificación de restricciones de usuarios...");
 
