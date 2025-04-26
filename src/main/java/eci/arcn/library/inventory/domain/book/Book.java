@@ -1,9 +1,10 @@
 package eci.arcn.library.inventory.domain.book;
 
+import lombok.Data;
 import lombok.Getter;
 import org.springframework.util.Assert;
 
-@Getter
+@Data
 public class Book {
 
     private BookId id;
