@@ -19,7 +19,6 @@ public class RequestBookUseCase {
     }
 
     public void execute(UUID bookId, UUID userId) {
-        System.out.println("paso aqui");
         Transaction transaction = new Transaction();
         transaction.setTransactionId(generateTransactionId());
         transaction.setBookId(bookId);
