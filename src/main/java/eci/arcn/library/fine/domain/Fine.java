@@ -25,6 +25,17 @@ public class Fine {
         this.paid = false;
     }
 
+    public Fine(String userId, String amount, String dueDate) {
+        this.id = new FineId();
+        this.userId = userId;
+        this.amount = amount;
+        this.dueDate = dueDate;
+        this.book = "";
+        this.delayed = false;
+        this.paid = false;
+    }
+    
+
     public void markAsPaid() {
         this.paid = true;
     }

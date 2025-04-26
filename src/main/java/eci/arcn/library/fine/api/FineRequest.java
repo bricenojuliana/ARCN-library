@@ -7,7 +7,7 @@ public class FineRequest {
     private String book;
     private boolean delayed;
 
-    // Getters y setters obligatorios para que Spring lo reconozca correctamente
+    // Getters y setters 
     public String getUserId() {
         return userId;
     }
