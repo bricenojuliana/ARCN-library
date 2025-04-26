@@ -1,0 +1,45 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Descarga el código del repositorio
+        with:
+          ref: 'main'
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'corretto'
+
+      - name: Build with Maven
+        run: mvn clean install -DskipTests  # Compila el proyecto, puedes cambiar a gradle si usas ese
+
+      - name: Run tests
+        run: mvn test  # Ejecuta las pruebas unitarias del proyecto
+
+      - name: Upload Test Reports
+        if: always()
+        uses: actions/upload-artifact@v4  # Actualizado de v2 a v4
+        with:
+          name: test-report
+          path: target/test-*.xml  # Los resultados de las pruebas se pueden cargar como artefactos
