@@ -1,4 +1,4 @@
-package eci.arcn.library.transaction.api;
+package eci.arcn.library.transaction.infrastructure.api;
 
 import eci.arcn.library.inventory.domain.book.BookId;
 import eci.arcn.library.transaction.application.RequestBookUseCase;

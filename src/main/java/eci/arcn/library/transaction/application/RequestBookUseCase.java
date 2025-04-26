@@ -1,6 +1,6 @@
 package eci.arcn.library.transaction.application;
 
-import eci.arcn.library.UseCase;
+import eci.arcn.library.shared.UseCase;
 import eci.arcn.library.transaction.domain.Transaction;
 import eci.arcn.library.transaction.domain.TransactionStatus;
 import eci.arcn.library.transaction.infrastructure.TransactionRepository;
