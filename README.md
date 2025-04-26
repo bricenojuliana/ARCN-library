@@ -101,9 +101,6 @@ The project currently has **9 implemented endpoints**, including the **Book Mana
 8. **GET** `/api/books/{id}`: Retrieves a book by its ID.
 9. **DELETE** `/api/books/{id}`: Deletes a book by its ID.
 
-### Transaction Management
-- **To be implemented**.
-
 ## Testing
 
 The project includes a comprehensive suite of tests to ensure code quality and reliability. To run the tests, use the following command:
