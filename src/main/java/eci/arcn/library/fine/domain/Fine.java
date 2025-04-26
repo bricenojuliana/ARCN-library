@@ -12,7 +12,7 @@ public class Fine {
     private boolean delayed;
     private boolean paid;
 
-    public Fine(FineId id,String userId, String amount, String dueDate, String book, boolean delayed) {
+    public Fine(FineId id,String userId, String amount, String dueDate, String book, boolean delayed,boolean paid) {
         this.id = id;
         this.userId = userId;
         this.amount = amount;
@@ -43,6 +43,11 @@ public class Fine {
 
     public boolean isDelayed() {
         return this.delayed;
+    }
+
+    public void pay() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'pay'");
     }
 }
 

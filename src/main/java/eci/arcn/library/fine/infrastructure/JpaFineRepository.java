@@ -42,9 +42,11 @@ public class JpaFineRepository implements FineRepository {
                 entity.getAmount(),
                 entity.getDueDate(),
                 entity.getBook(),
-                entity.isDelayed()
+                entity.isDelayed(),
+                entity.isPaid() // <-- agrégalo aquí
         );
     }
+
 
     @Override
     public Iterable<Fine> findByUserId(String userId) {
@@ -55,7 +57,8 @@ public class JpaFineRepository implements FineRepository {
                         entity.getAmount(),
                         entity.getDueDate(),
                         entity.getBook(),
-                        entity.isDelayed()
+                        entity.isDelayed(),
+                        entity.isPaid()
                 ))
                 .collect(Collectors.toList());
     }
@@ -64,4 +67,7 @@ public class JpaFineRepository implements FineRepository {
     public void deleteById(FineId id) {
         fineEntityRepository.deleteById(id.id());
     }
+
+
+
 }

@@ -24,7 +24,9 @@ public class FineController {
                 request.getAmount(),
                 request.getDueDate(),
                 request.getBook(),
-                request.isDelayed()
+                request.isDelayed(),
+                request.isPaid()
+
         );
         return ResponseEntity.ok(fineRepository.save(fine));
     }

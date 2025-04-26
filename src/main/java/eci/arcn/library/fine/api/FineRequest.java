@@ -6,7 +6,15 @@ public class FineRequest {
     private String dueDate;
     private String book;
     private boolean delayed;
+    public boolean isPaid() {
+        return paid;
+    }
 
+    public void setPaid(boolean paid) {
+        this.paid = paid;
+    }
+
+    private boolean paid;
     // Getters y setters 
     public String getUserId() {
         return userId;
