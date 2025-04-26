@@ -1,4 +1,4 @@
-package eci.arcn.Fine;
+package eci.arcn.Fine.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
@@ -12,4 +12,25 @@ public class FineTest {
         fine.markAsPaid();
         assertTrue(fine.isPaid());
     }
+
+    @Test
+    public void testFineConstructorShouldHandleEmptyBookAndDelayedFalse() {
+        Fine fine = new Fine("user1", "1000", "2025-05-01");
+
+        assertNotNull(fine);
+        assertEquals("", fine.getBook()); 
+        assertFalse(fine.isDelayed());
+    }
+
+    @Test
+    public void testMarkAsPaidShouldUpdatePaidStatus() {
+        Fine fine = new Fine("user1", "1000", "2025-05-01");
+        assertFalse(fine.isPaid()); 
+
+        fine.markAsPaid();
+
+        assertTrue(fine.isPaid()); 
+    }
+
+
 }
