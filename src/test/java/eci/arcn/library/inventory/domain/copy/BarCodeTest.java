@@ -1,4 +1,4 @@
-package eci.arcn.library.domain.copy;
+package eci.arcn.library.inventory.domain.copy;
 
 import eci.arcn.library.inventory.domain.copy.BarCode;
 import org.junit.jupiter.api.Test;
